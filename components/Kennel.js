@@ -16,7 +16,6 @@ export const Kennel = () => (
         <article className="animals">
             <AnimalCard />
             <AnimalCard />
-            <AnimalCard />
         </article>
 
         <h2>Employees</h2>
