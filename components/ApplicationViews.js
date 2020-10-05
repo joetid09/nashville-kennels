@@ -4,6 +4,8 @@ import { Home } from "./Home"
 import { AnimalCard } from "./animal/AnimalCard"
 import { AnimalProvider } from "./animal/AnimalProvider"
 import { AnimalList } from "./animal/AnimalList"
+import { CustomerList } from "./customers/CustomerList"
+import { CustomerProvider } from "./customers/CustomerProvider"
 
 
 export const ApplicationViews = (props) => {
@@ -21,6 +23,12 @@ export const ApplicationViews = (props) => {
                     <AnimalList />
                 </Route>
             </AnimalProvider>
+
+            <CustomerProvider>
+                <Route exact path="/customers">
+                    <CustomerList />
+                </Route>
+            </CustomerProvider>
         </>
     )
 }
