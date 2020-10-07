@@ -8,7 +8,11 @@ import { CustomerList } from "./customers/CustomerList"
 import { CustomerProvider } from "./customers/CustomerProvider"
 import { EmployeeProvider } from "./employees/EmployeeProvider"
 import { EmployeeList } from "./employees/EmployeeList"
-
+import { LocationProvider } from "./locations/LocationProvider"
+import { LocationList } from "./locations/LocationList"
+import { useHistory } from 'react-router-dom'
+import { AnimalForm } from "./animal/AnimalForm"
+import { CustomerForm } from "./customers/CustomerForm"
 
 export const ApplicationViews = (props) => {
     return (
@@ -26,17 +30,46 @@ export const ApplicationViews = (props) => {
                 </Route>
             </AnimalProvider>
 
+            <AnimalProvider>
+                <LocationProvider>
+                    <CustomerProvider>
+                        <Route exact path="/animals/create">
+                            <AnimalForm />
+                        </Route>
+                    </CustomerProvider>
+                </LocationProvider>
+            </AnimalProvider>
+
             <CustomerProvider>
                 <Route exact path="/customers">
                     <CustomerList />
                 </Route>
             </CustomerProvider>
 
+            <AnimalProvider>
+                <LocationProvider>
+                    <CustomerProvider>
+                        <Route exact path="/customers/create">
+                            <CustomerForm />
+                        </Route>
+                    </CustomerProvider>
+                </LocationProvider>
+            </AnimalProvider>
+
             <EmployeeProvider>
                 <Route exact path="/employees">
                     <EmployeeList />
                 </Route>
             </EmployeeProvider>
+
+            <LocationProvider>
+                <Route exact path="/locations">
+                    <LocationList />
+                </Route>
+            </LocationProvider>
+
+
         </>
     )
 }
+
