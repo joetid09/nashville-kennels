@@ -13,6 +13,7 @@ import { LocationList } from "./locations/LocationList"
 import { useHistory } from 'react-router-dom'
 import { AnimalForm } from "./animal/AnimalForm"
 import { CustomerForm } from "./customers/CustomerForm"
+import { EmployeeForm } from "./employees/EmployeeForm"
 
 export const ApplicationViews = (props) => {
     return (
@@ -61,6 +62,18 @@ export const ApplicationViews = (props) => {
                     <EmployeeList />
                 </Route>
             </EmployeeProvider>
+
+            <AnimalProvider>
+                <LocationProvider>
+                    <CustomerProvider>
+                        <EmployeeProvider>
+                            <Route exact path="/employees/create">
+                                <EmployeeForm />
+                            </Route>
+                        </EmployeeProvider>
+                    </CustomerProvider>
+                </LocationProvider>
+            </AnimalProvider>
 
             <LocationProvider>
                 <Route exact path="/locations">
