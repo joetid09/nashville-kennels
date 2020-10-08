@@ -25,6 +25,18 @@ export const CustomerProvider = (props) => {
             .then(getCustomers)
     }
 
+    const getCustomerById = (id) => {
+        return fetch(`http://localhost:8088/customers/${id}?_expand=location&_expand=customer`)
+            .then(res => res.json())
+    }
+
+    const releaseCustomer = customerId => {
+        return fetch(`http://localhost:8088/customers/${customerId}`, {
+            method: "DELETE"
+        })
+            .then(getCustomers)
+    }
+
     /*
         You return a context provider which has the
         `locations` state, the `addLocation` function,
@@ -33,7 +45,7 @@ export const CustomerProvider = (props) => {
     */
     return (
         <CustomerContext.Provider value={{
-            customers, getCustomers, addCustomer
+            customers, getCustomers, addCustomer, getCustomerById, releaseCustomer
         }}>
             {props.children}
         </CustomerContext.Provider>
